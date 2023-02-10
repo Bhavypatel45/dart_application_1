@@ -1,4 +1,3 @@
-import 'dart:developer';
 import "dart:math";
 
 Random rnd = new Random();
@@ -10,6 +9,7 @@ String select_element(var alphabet,var currentLearn)
     {
 		    Set random = {'alphabat','current_learn'};
 			  var pick;
+
         if(currentLearn.length > 5 && alphabet.length != 0) {
             pick = random.elementAt(rnd.nextInt(random.length));
         } else if(alphabet.length == 0) {
@@ -67,8 +67,6 @@ void main() {
         alphabet.remove(element);
 
       // ----------- Number Select -----------
-        // var n = number[rnd.nextInt(number.length)];
-        // print(n);
 
         var num = number.values;
         var randomnumer = num[rnd.nextInt(num.length)];
