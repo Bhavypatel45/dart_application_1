@@ -6,8 +6,6 @@ const alphabet = 26;
 var alphabets =
     List.generate(alphabet, (index) => String.fromCharCode(index + 65));
 var listOfElement = List.generate(maxRows, (_) => List.filled(maxRows, ''));
-var displayMatrix = List.generate(3, (_) => List.filled(3, ''));
-
 var firstcharacter = "Y";
 var secondCharacter = "Z";
 var thirdCharacter = "AA";
@@ -427,37 +425,32 @@ void testcaseSwipeRight(var index, var listOfElement, var oldValueOf1stColumn,
 }
 
 void screenDisplayGrid() {
-  for (int i = 0; i < 3; i++) {
-    for (int j = 0; j < 3; j++) {
-      displayMatrix[i][j] = listOfElement[i + 2][j + 2];
-    }
-  }
-  for (int i = 0; i < 3; i++) {
+  for (int i = 2; i < 5; i++) {
     print(
-        ' ${displayMatrix[i][0]}  ${displayMatrix[i][1]}  ${displayMatrix[i][2]} ');
+        ' ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]} ');
   }
 }
 
 void matchingFunction() {
-  if (displayMatrix[1][0] == firstcharacter ||
-      displayMatrix[1][0] == secondCharacter ||
-      displayMatrix[1][0] == thirdCharacter) {
+  if (listOfElement[3][2] == firstcharacter ||
+      listOfElement[3][2] == secondCharacter ||
+      listOfElement[3][2] == thirdCharacter) {
     print("Match Character");
   } else {
     print("Not Match Character");
   }
 
-  if (displayMatrix[1][1] == firstcharacter ||
-      displayMatrix[1][1] == secondCharacter ||
-      displayMatrix[1][1] == thirdCharacter) {
+  if (listOfElement[3][3] == firstcharacter ||
+      listOfElement[3][3] == secondCharacter ||
+      listOfElement[3][3] == thirdCharacter) {
     print("Match Character");
   } else {
     print("Not Match Character");
   }
 
-  if (displayMatrix[1][2] == firstcharacter ||
-      displayMatrix[1][2] == secondCharacter ||
-      displayMatrix[1][2] == thirdCharacter) {
+  if (listOfElement[3][4] == firstcharacter ||
+      listOfElement[3][4] == secondCharacter ||
+      listOfElement[3][4] == thirdCharacter) {
     print('Match Character');
   } else {
     print('Not Match Character');
