@@ -1,5 +1,4 @@
 import "dart:math";
-import 'package:test/test.dart';
 
 const maxRows = 7;
 const maxColumns = 7;
@@ -10,18 +9,18 @@ var listOfElement = List.generate(maxRows, (_) => List.filled(maxRows, ''));
 Set resultSet = {"Y", "S", "AA"};
 
 var swipeSelection = [
-  clickFunctionSwipeDownFirstColumn(),
-  clickFunctionSwipeDownSecondColumn(),
-  clickFunctionSwipeDownThirdColumn(),
-  clickFunctionSwipeUpFirstColumn(),
-  clickFunctionSwipeUpSecondColumn(),
-  clickFunctionSwipeUpThirdColumn(),
-  clickFunctionSwipeLeftFirstRow(),
-  clickFunctionSwipeLeftSecondRow(),
-  clickFunctionSwipeLeftThirdRow(),
-  clickFunctionSwipeRightFirstRow(),
-  clickFunctionSwipeRightSecondRow(),
-  clickFunctionSwipeRightThirdRow()
+  clickFunctionSwipeDownColumns(2),
+  clickFunctionSwipeDownColumns(3),
+  clickFunctionSwipeDownColumns(4),
+  clickFunctionSwipeUpColumns(2),
+  clickFunctionSwipeUpColumns(3),
+  clickFunctionSwipeUpColumns(4),
+  clickFunctionSwipeLeftRows(2),
+  clickFunctionSwipeLeftRows(3),
+  clickFunctionSwipeLeftRows(4),
+  clickFunctionSwipeRightRows(2),
+  clickFunctionSwipeRightRows(3),
+  clickFunctionSwipeRightRows(4)
 ];
 
 Random rnd = new Random();
@@ -65,48 +64,13 @@ void initialList() {
 
 // Swape Down Columns and test their old value with new value
 
-void clickFunctionSwipeDownFirstColumn() {
-  var index = 2;
+void clickFunctionSwipeDownColumns(int index) {
   var oldValueOf1stColumn = listOfElement[0][index];
   var oldValueOf2ndColumn = listOfElement[1][index];
   var oldValueOf3rdColumn = listOfElement[2][index];
   listOfElement = swipeDownFunction(listOfElement, maxColumns, index);
   print("-------------------------------------------------");
-  print("Swipe after 3rd Column Down: ");
-  testcaseSwipeDown(index, listOfElement, oldValueOf1stColumn,
-      oldValueOf2ndColumn, oldValueOf3rdColumn);
-  for (int i = 0; i < maxRows; i++) {
-    print(
-        ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
-  }
-  screenDisplayGrid();
-}
-
-void clickFunctionSwipeDownSecondColumn() {
-  var index = 3;
-  var oldValueOf1stColumn = listOfElement[0][index];
-  var oldValueOf2ndColumn = listOfElement[1][index];
-  var oldValueOf3rdColumn = listOfElement[2][index];
-  listOfElement = swipeDownFunction(listOfElement, maxColumns, index);
-  print("-------------------------------------------------");
-  print("Swipe after 4th Column Down: ");
-  testcaseSwipeDown(index, listOfElement, oldValueOf1stColumn,
-      oldValueOf2ndColumn, oldValueOf3rdColumn);
-  for (int i = 0; i < maxRows; i++) {
-    print(
-        ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
-  }
-  screenDisplayGrid();
-}
-
-void clickFunctionSwipeDownThirdColumn() {
-  var index = 4;
-  var oldValueOf1stColumn = listOfElement[0][index];
-  var oldValueOf2ndColumn = listOfElement[1][index];
-  var oldValueOf3rdColumn = listOfElement[2][index];
-  listOfElement = swipeDownFunction(listOfElement, maxColumns, index);
-  print("-------------------------------------------------");
-  print("Swipe after 5th Column Down: ");
+  print("Swipe after ${index + 1} Column Down: ");
   testcaseSwipeDown(index, listOfElement, oldValueOf1stColumn,
       oldValueOf2ndColumn, oldValueOf3rdColumn);
   for (int i = 0; i < maxRows; i++) {
@@ -147,48 +111,13 @@ void testcaseSwipeDown(var index, var listOfElement, var oldValueOf1stColumn,
 
 // Swape Up Columns and test their old value with new value
 
-void clickFunctionSwipeUpFirstColumn() {
-  var index = 2;
+void clickFunctionSwipeUpColumns(int index) {
   var oldValueOf1stColumn = listOfElement[1][index];
   var oldValueOf2ndColumn = listOfElement[2][index];
   var oldValueOf3rdColumn = listOfElement[3][index];
   listOfElement = swipeUpFunction(listOfElement, maxColumns, index);
   print("-------------------------------------------------");
-  print("Swipe after 3rd Column Up: ");
-  testcaseSwipeUp(index, listOfElement, oldValueOf1stColumn,
-      oldValueOf2ndColumn, oldValueOf3rdColumn);
-  for (int i = 0; i < maxRows; i++) {
-    print(
-        ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
-  }
-  screenDisplayGrid();
-}
-
-void clickFunctionSwipeUpSecondColumn() {
-  var index = 3;
-  var oldValueOf1stColumn = listOfElement[1][index];
-  var oldValueOf2ndColumn = listOfElement[2][index];
-  var oldValueOf3rdColumn = listOfElement[3][index];
-  listOfElement = swipeUpFunction(listOfElement, maxColumns, index);
-  print("-------------------------------------------------");
-  print("Swipe after 4th Column Up: ");
-  testcaseSwipeUp(index, listOfElement, oldValueOf1stColumn,
-      oldValueOf2ndColumn, oldValueOf3rdColumn);
-  for (int i = 0; i < maxRows; i++) {
-    print(
-        ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
-  }
-  screenDisplayGrid();
-}
-
-void clickFunctionSwipeUpThirdColumn() {
-  var index = 4;
-  var oldValueOf1stColumn = listOfElement[1][index];
-  var oldValueOf2ndColumn = listOfElement[2][index];
-  var oldValueOf3rdColumn = listOfElement[3][index];
-  listOfElement = swipeUpFunction(listOfElement, maxColumns, index);
-  print("-------------------------------------------------");
-  print("Swipe after 5th Column Up: ");
+  print("Swipe after ${index + 1} Column Up: ");
   testcaseSwipeUp(index, listOfElement, oldValueOf1stColumn,
       oldValueOf2ndColumn, oldValueOf3rdColumn);
   for (int i = 0; i < maxRows; i++) {
@@ -229,48 +158,13 @@ void testcaseSwipeUp(var index, var listOfElement, var oldValueOf1stRow,
 
 // Swape Left Rows and test their old value with new value
 
-void clickFunctionSwipeLeftFirstRow() {
-  var index = 2;
+void clickFunctionSwipeLeftRows(int index) {
   var oldValueOf1stRow = listOfElement[index][1];
   var oldValueOf2ndRow = listOfElement[index][2];
   var oldValueOf3rdRow = listOfElement[index][3];
   listOfElement = swipeLeftFunction(listOfElement, maxRows, index);
   print("-------------------------------------------------");
-  print("Swipe after 3rd Row Left: ");
-  testcaseSwipeLeft(index, listOfElement, oldValueOf1stRow, oldValueOf2ndRow,
-      oldValueOf3rdRow);
-  for (int i = 0; i < maxRows; i++) {
-    print(
-        ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
-  }
-  screenDisplayGrid();
-}
-
-void clickFunctionSwipeLeftSecondRow() {
-  var index = 3;
-  var oldValueOf1stRow = listOfElement[index][1];
-  var oldValueOf2ndRow = listOfElement[index][2];
-  var oldValueOf3rdRow = listOfElement[index][3];
-  listOfElement = swipeLeftFunction(listOfElement, maxRows, index);
-  print("-------------------------------------------------");
-  print("Swipe after 4th Row Left: ");
-  testcaseSwipeLeft(index, listOfElement, oldValueOf1stRow, oldValueOf2ndRow,
-      oldValueOf3rdRow);
-  for (int i = 0; i < maxRows; i++) {
-    print(
-        ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
-  }
-  screenDisplayGrid();
-}
-
-void clickFunctionSwipeLeftThirdRow() {
-  var index = 4;
-  var oldValueOf1stRow = listOfElement[index][1];
-  var oldValueOf2ndRow = listOfElement[index][2];
-  var oldValueOf3rdRow = listOfElement[index][3];
-  listOfElement = swipeLeftFunction(listOfElement, maxRows, index);
-  print("-------------------------------------------------");
-  print("Swipe after 5th Row Left: ");
+  print("Swipe after ${index + 1} Row Left: ");
   testcaseSwipeLeft(index, listOfElement, oldValueOf1stRow, oldValueOf2ndRow,
       oldValueOf3rdRow);
   for (int i = 0; i < maxRows; i++) {
@@ -311,48 +205,13 @@ void testcaseSwipeLeft(var index, var listOfElement, var oldValueOf1stRow,
 
 // Swape Right Rows and test their old value with new value
 
-void clickFunctionSwipeRightFirstRow() {
-  var index = 2;
+void clickFunctionSwipeRightRows(int index) {
   var oldValueOf1stRow = listOfElement[index][1];
   var oldValueOf2ndRow = listOfElement[index][2];
   var oldValueOf3rdRow = listOfElement[index][3];
   listOfElement = swipeRightFunction(listOfElement, maxRows, index);
   print("-------------------------------------------------");
-  print("Swipe after 3rd Row Right: ");
-  testcaseSwipeRight(index, listOfElement, oldValueOf1stRow, oldValueOf2ndRow,
-      oldValueOf3rdRow);
-  for (int i = 0; i < maxRows; i++) {
-    print(
-        ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
-  }
-  screenDisplayGrid();
-}
-
-void clickFunctionSwipeRightSecondRow() {
-  var index = 3;
-  var oldValueOf1stRow = listOfElement[index][1];
-  var oldValueOf2ndRow = listOfElement[index][2];
-  var oldValueOf3rdRow = listOfElement[index][3];
-  listOfElement = swipeRightFunction(listOfElement, maxRows, index);
-  print("-------------------------------------------------");
-  print("Swipe after 4th Row Right: ");
-  testcaseSwipeRight(index, listOfElement, oldValueOf1stRow, oldValueOf2ndRow,
-      oldValueOf3rdRow);
-  for (int i = 0; i < maxRows; i++) {
-    print(
-        ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
-  }
-  screenDisplayGrid();
-}
-
-void clickFunctionSwipeRightThirdRow() {
-  var index = 4;
-  var oldValueOf1stRow = listOfElement[index][1];
-  var oldValueOf2ndRow = listOfElement[index][2];
-  var oldValueOf3rdRow = listOfElement[index][3];
-  listOfElement = swipeRightFunction(listOfElement, maxRows, index);
-  print("-------------------------------------------------");
-  print("Swipe after 5th Row Right: ");
+  print("Swipe after ${index + 1} Row Right: ");
   testcaseSwipeRight(index, listOfElement, oldValueOf1stRow, oldValueOf2ndRow,
       oldValueOf3rdRow);
   for (int i = 0; i < maxRows; i++) {
