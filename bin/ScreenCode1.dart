@@ -1,4 +1,5 @@
-//import 'package:chalkdart/chalk.dart';
+import "dart:math";
+import 'package:test/test.dart';
 
 const maxRows = 7;
 const maxColumns = 7;
@@ -6,112 +7,42 @@ const alphabet = 26;
 var alphabets =
     List.generate(alphabet, (index) => String.fromCharCode(index + 65));
 var listOfElement = List.generate(maxRows, (_) => List.filled(maxRows, ''));
-var firstcharacter = "Y";
-var secondCharacter = "Z";
-var thirdCharacter = "AA";
+Set resultSet = {"Y", "S", "AA"};
+
+var swipeSelection = [
+  clickFunctionSwipeDownFirstColumn(),
+  clickFunctionSwipeDownSecondColumn(),
+  clickFunctionSwipeDownThirdColumn(),
+  clickFunctionSwipeUpFirstColumn(),
+  clickFunctionSwipeUpSecondColumn(),
+  clickFunctionSwipeUpThirdColumn(),
+  clickFunctionSwipeLeftFirstRow(),
+  clickFunctionSwipeLeftSecondRow(),
+  clickFunctionSwipeLeftThirdRow(),
+  clickFunctionSwipeRightFirstRow(),
+  clickFunctionSwipeRightSecondRow(),
+  clickFunctionSwipeRightThirdRow()
+];
+
+Random rnd = new Random();
 
 void main() {
-  addElementInList();
+  initialList();
 
   print("initial Matrix of Element: ");
   for (int i = 0; i < maxRows; i++) {
     print(
         ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
   }
-  print(" ");
-  print("----------Grid of 3*3----------");
+
   screenDisplayGrid();
-  matchingFunction();
-  print("-------------------------------------------------");
-  print("Swipe after 3rd Column Down: ");
-  clickFunctionSwipeDownFirstColumn();
-  print(" ");
-  print("----------Grid of 3*3----------");
-  screenDisplayGrid();
-  matchingFunction();
-  print("-------------------------------------------------");
-  print("Swipe after 4th Column Down: ");
-  clickFunctionSwipeDownSecondColumn();
-  print(" ");
-  print("----------Grid of 3*3----------");
-  screenDisplayGrid();
-  matchingFunction();
-  print("-------------------------------------------------");
-  print("Swipe after 5th Column Down: ");
-  clickFunctionSwipeDownThirdColumn();
-  print(" ");
-  print("----------Grid of 3*3----------");
-  screenDisplayGrid();
-  matchingFunction();
-  print("-------------------------------------------------");
-  print("Swipe after 3rd Column Up: ");
-  clickFunctionSwipeUpFirstColumn();
-  print(" ");
-  print("----------Grid of 3*3----------");
-  screenDisplayGrid();
-  matchingFunction();
-  print("-------------------------------------------------");
-  print("Swipe after 4th Column Up: ");
-  clickFunctionSwipeUpSecondColumn();
-  print(" ");
-  print("----------Grid of 3*3----------");
-  screenDisplayGrid();
-  matchingFunction();
-  print("-------------------------------------------------");
-  print("Swipe after 5th Column Up: ");
-  clickFunctionSwipeUpThirdColumn();
-  print(" ");
-  print("----------Grid of 3*3----------");
-  screenDisplayGrid();
-  matchingFunction();
-  print("-------------------------------------------------");
-  print("Swipe after 3rd Row Left: ");
-  clickFunctionSwipeLeftFirstRow();
-  print(" ");
-  print("----------Grid of 3*3----------");
-  screenDisplayGrid();
-  matchingFunction();
-  print("-------------------------------------------------");
-  print("Swipe after 4th Row Left: ");
-  clickFunctionSwipeLeftSecondRow();
-  print(" ");
-  print("----------Grid of 3*3----------");
-  screenDisplayGrid();
-  matchingFunction();
-  print("-------------------------------------------------");
-  print("Swipe after 5th Row Left: ");
-  clickFunctionSwipeLeftThirdRow();
-  print(" ");
-  print("----------Grid of 3*3----------");
-  screenDisplayGrid();
-  matchingFunction();
-  print("-------------------------------------------------");
-  print("Swipe after 3rd Row Right: ");
-  clickFunctionSwipeRightFirstRow();
-  print(" ");
-  print("----------Grid of 3*3----------");
-  screenDisplayGrid();
-  matchingFunction();
-  print("-------------------------------------------------");
-  print("Swipe after 4th Row Right: ");
-  clickFunctionSwipeRightSecondRow();
-  print(" ");
-  print("----------Grid of 3*3----------");
-  screenDisplayGrid();
-  matchingFunction();
-  print("-------------------------------------------------");
-  print("Swipe after 5th Row Right: ");
-  clickFunctionSwipeRightThirdRow();
-  print(" ");
-  print("----------Grid of 3*3----------");
-  screenDisplayGrid();
-  matchingFunction();
-  print("-------------------------------------------------");
+
+  swipeSelection[rnd.nextInt(swipeSelection.length)];
 }
 
 // Add element into a List
 
-void addElementInList() {
+void initialList() {
   var twoLetterCombinations = List.generate(alphabet * alphabet, (index) {
     int firstLetterIndex = (index ~/ alphabet);
     int secondLetterIndex = (index % alphabet);
@@ -140,12 +71,15 @@ void clickFunctionSwipeDownFirstColumn() {
   var oldValueOf2ndColumn = listOfElement[1][index];
   var oldValueOf3rdColumn = listOfElement[2][index];
   listOfElement = swipeDownFunction(listOfElement, maxColumns, index);
+  print("-------------------------------------------------");
+  print("Swipe after 3rd Column Down: ");
   testcaseSwipeDown(index, listOfElement, oldValueOf1stColumn,
       oldValueOf2ndColumn, oldValueOf3rdColumn);
   for (int i = 0; i < maxRows; i++) {
     print(
         ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
   }
+  screenDisplayGrid();
 }
 
 void clickFunctionSwipeDownSecondColumn() {
@@ -154,12 +88,15 @@ void clickFunctionSwipeDownSecondColumn() {
   var oldValueOf2ndColumn = listOfElement[1][index];
   var oldValueOf3rdColumn = listOfElement[2][index];
   listOfElement = swipeDownFunction(listOfElement, maxColumns, index);
+  print("-------------------------------------------------");
+  print("Swipe after 4th Column Down: ");
   testcaseSwipeDown(index, listOfElement, oldValueOf1stColumn,
       oldValueOf2ndColumn, oldValueOf3rdColumn);
   for (int i = 0; i < maxRows; i++) {
     print(
         ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
   }
+  screenDisplayGrid();
 }
 
 void clickFunctionSwipeDownThirdColumn() {
@@ -168,12 +105,15 @@ void clickFunctionSwipeDownThirdColumn() {
   var oldValueOf2ndColumn = listOfElement[1][index];
   var oldValueOf3rdColumn = listOfElement[2][index];
   listOfElement = swipeDownFunction(listOfElement, maxColumns, index);
+  print("-------------------------------------------------");
+  print("Swipe after 5th Column Down: ");
   testcaseSwipeDown(index, listOfElement, oldValueOf1stColumn,
       oldValueOf2ndColumn, oldValueOf3rdColumn);
   for (int i = 0; i < maxRows; i++) {
     print(
         ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
   }
+  screenDisplayGrid();
 }
 
 List<List<String>> swipeDownFunction(
@@ -213,12 +153,15 @@ void clickFunctionSwipeUpFirstColumn() {
   var oldValueOf2ndColumn = listOfElement[2][index];
   var oldValueOf3rdColumn = listOfElement[3][index];
   listOfElement = swipeUpFunction(listOfElement, maxColumns, index);
+  print("-------------------------------------------------");
+  print("Swipe after 3rd Column Up: ");
   testcaseSwipeUp(index, listOfElement, oldValueOf1stColumn,
       oldValueOf2ndColumn, oldValueOf3rdColumn);
   for (int i = 0; i < maxRows; i++) {
     print(
         ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
   }
+  screenDisplayGrid();
 }
 
 void clickFunctionSwipeUpSecondColumn() {
@@ -227,12 +170,15 @@ void clickFunctionSwipeUpSecondColumn() {
   var oldValueOf2ndColumn = listOfElement[2][index];
   var oldValueOf3rdColumn = listOfElement[3][index];
   listOfElement = swipeUpFunction(listOfElement, maxColumns, index);
+  print("-------------------------------------------------");
+  print("Swipe after 4th Column Up: ");
   testcaseSwipeUp(index, listOfElement, oldValueOf1stColumn,
       oldValueOf2ndColumn, oldValueOf3rdColumn);
   for (int i = 0; i < maxRows; i++) {
     print(
         ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
   }
+  screenDisplayGrid();
 }
 
 void clickFunctionSwipeUpThirdColumn() {
@@ -241,12 +187,15 @@ void clickFunctionSwipeUpThirdColumn() {
   var oldValueOf2ndColumn = listOfElement[2][index];
   var oldValueOf3rdColumn = listOfElement[3][index];
   listOfElement = swipeUpFunction(listOfElement, maxColumns, index);
+  print("-------------------------------------------------");
+  print("Swipe after 5th Column Up: ");
   testcaseSwipeUp(index, listOfElement, oldValueOf1stColumn,
       oldValueOf2ndColumn, oldValueOf3rdColumn);
   for (int i = 0; i < maxRows; i++) {
     print(
         ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
   }
+  screenDisplayGrid();
 }
 
 List<List<String>> swipeUpFunction(
@@ -286,12 +235,15 @@ void clickFunctionSwipeLeftFirstRow() {
   var oldValueOf2ndRow = listOfElement[index][2];
   var oldValueOf3rdRow = listOfElement[index][3];
   listOfElement = swipeLeftFunction(listOfElement, maxRows, index);
+  print("-------------------------------------------------");
+  print("Swipe after 3rd Row Left: ");
   testcaseSwipeLeft(index, listOfElement, oldValueOf1stRow, oldValueOf2ndRow,
       oldValueOf3rdRow);
   for (int i = 0; i < maxRows; i++) {
     print(
         ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
   }
+  screenDisplayGrid();
 }
 
 void clickFunctionSwipeLeftSecondRow() {
@@ -300,12 +252,15 @@ void clickFunctionSwipeLeftSecondRow() {
   var oldValueOf2ndRow = listOfElement[index][2];
   var oldValueOf3rdRow = listOfElement[index][3];
   listOfElement = swipeLeftFunction(listOfElement, maxRows, index);
+  print("-------------------------------------------------");
+  print("Swipe after 4th Row Left: ");
   testcaseSwipeLeft(index, listOfElement, oldValueOf1stRow, oldValueOf2ndRow,
       oldValueOf3rdRow);
   for (int i = 0; i < maxRows; i++) {
     print(
         ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
   }
+  screenDisplayGrid();
 }
 
 void clickFunctionSwipeLeftThirdRow() {
@@ -314,12 +269,15 @@ void clickFunctionSwipeLeftThirdRow() {
   var oldValueOf2ndRow = listOfElement[index][2];
   var oldValueOf3rdRow = listOfElement[index][3];
   listOfElement = swipeLeftFunction(listOfElement, maxRows, index);
+  print("-------------------------------------------------");
+  print("Swipe after 5th Row Left: ");
   testcaseSwipeLeft(index, listOfElement, oldValueOf1stRow, oldValueOf2ndRow,
       oldValueOf3rdRow);
   for (int i = 0; i < maxRows; i++) {
     print(
         ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
   }
+  screenDisplayGrid();
 }
 
 List<List<String>> swipeLeftFunction(
@@ -359,12 +317,15 @@ void clickFunctionSwipeRightFirstRow() {
   var oldValueOf2ndRow = listOfElement[index][2];
   var oldValueOf3rdRow = listOfElement[index][3];
   listOfElement = swipeRightFunction(listOfElement, maxRows, index);
+  print("-------------------------------------------------");
+  print("Swipe after 3rd Row Right: ");
   testcaseSwipeRight(index, listOfElement, oldValueOf1stRow, oldValueOf2ndRow,
       oldValueOf3rdRow);
   for (int i = 0; i < maxRows; i++) {
     print(
         ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
   }
+  screenDisplayGrid();
 }
 
 void clickFunctionSwipeRightSecondRow() {
@@ -373,12 +334,15 @@ void clickFunctionSwipeRightSecondRow() {
   var oldValueOf2ndRow = listOfElement[index][2];
   var oldValueOf3rdRow = listOfElement[index][3];
   listOfElement = swipeRightFunction(listOfElement, maxRows, index);
+  print("-------------------------------------------------");
+  print("Swipe after 4th Row Right: ");
   testcaseSwipeRight(index, listOfElement, oldValueOf1stRow, oldValueOf2ndRow,
       oldValueOf3rdRow);
   for (int i = 0; i < maxRows; i++) {
     print(
         ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
   }
+  screenDisplayGrid();
 }
 
 void clickFunctionSwipeRightThirdRow() {
@@ -387,12 +351,15 @@ void clickFunctionSwipeRightThirdRow() {
   var oldValueOf2ndRow = listOfElement[index][2];
   var oldValueOf3rdRow = listOfElement[index][3];
   listOfElement = swipeRightFunction(listOfElement, maxRows, index);
+  print("-------------------------------------------------");
+  print("Swipe after 5th Row Right: ");
   testcaseSwipeRight(index, listOfElement, oldValueOf1stRow, oldValueOf2ndRow,
       oldValueOf3rdRow);
   for (int i = 0; i < maxRows; i++) {
     print(
         ' ${listOfElement[i][0]}  ${listOfElement[i][1]}  ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]}  ${listOfElement[i][5]}  ${listOfElement[i][6]}  ');
   }
+  screenDisplayGrid();
 }
 
 List<List<String>> swipeRightFunction(
@@ -425,32 +392,35 @@ void testcaseSwipeRight(var index, var listOfElement, var oldValueOf1stColumn,
 }
 
 void screenDisplayGrid() {
+  print(" ");
+  print("----------Grid of 3*3----------");
   for (int i = 2; i < 5; i++) {
     print(
         ' ${listOfElement[i][2]}  ${listOfElement[i][3]}  ${listOfElement[i][4]} ');
   }
+  matchingFunction();
 }
 
 void matchingFunction() {
-  if (listOfElement[3][2] == firstcharacter ||
-      listOfElement[3][2] == secondCharacter ||
-      listOfElement[3][2] == thirdCharacter) {
+  if (listOfElement[3][2] == resultSet.elementAt(0) ||
+      listOfElement[3][2] == resultSet.elementAt(1) ||
+      listOfElement[3][2] == resultSet.elementAt(2)) {
     print("Match Character");
   } else {
     print("Not Match Character");
   }
 
-  if (listOfElement[3][3] == firstcharacter ||
-      listOfElement[3][3] == secondCharacter ||
-      listOfElement[3][3] == thirdCharacter) {
+  if (listOfElement[3][3] == resultSet.elementAt(0) ||
+      listOfElement[3][3] == resultSet.elementAt(1) ||
+      listOfElement[3][3] == resultSet.elementAt(2)) {
     print("Match Character");
   } else {
     print("Not Match Character");
   }
 
-  if (listOfElement[3][4] == firstcharacter ||
-      listOfElement[3][4] == secondCharacter ||
-      listOfElement[3][4] == thirdCharacter) {
+  if (listOfElement[3][4] == resultSet.elementAt(0) ||
+      listOfElement[3][4] == resultSet.elementAt(1) ||
+      listOfElement[3][4] == resultSet.elementAt(2)) {
     print('Match Character');
   } else {
     print('Not Match Character');
